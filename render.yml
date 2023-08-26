@@ -1,0 +1,6 @@
+services:
+  - name: risevest
+    buildCommand: docker-compose build
+    runCommand: docker-compose up -d
+    healthCheckPath: /api/v1.login
+    healthCheckPort: 4000 # Adjust to the port your app listens on
