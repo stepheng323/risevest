@@ -1,0 +1,21 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: risevest
+      POSTGRES_PASSWORD: risevest
+      POSTGRES_DB: risevest
+    ports:
+      - "5431:5432"
+  migration:
+    build: .
+    command: ["node", "dist/database/runMigration.js"] # Adjust this command based on your setup
+    depends_on:
+      - app
