@@ -6,8 +6,8 @@ import postRouter from './post.route';
 const router = Router();
 
 
-router.use('/user', userRouter)
-router.use('/post', postRouter)
+router.use('/users', userRouter)
+router.use('/posts', postRouter)
 
 
 
