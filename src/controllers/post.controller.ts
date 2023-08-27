@@ -20,7 +20,7 @@ export const getUserPosts = catchAsync(async (req: Request, res: Response) => {
 
 export const fetchPosts = catchAsync(async (req: Request, res: Response) => {
   const { id: user_id } = req.params
-  const posts = await getPosts(user_id);
+  const posts = await getPosts();
   return respondWithSuccess(res, 200, 'Posts fetched successfully', posts)
 })
 
