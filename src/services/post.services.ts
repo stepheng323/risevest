@@ -24,6 +24,14 @@ export const getPostByUserId = async (userId: string): Promise<PostModel[]> => {
   return result.rows;
 }
 
+export const getPosts = async (userId: string): Promise<PostModel[]> => {
+  const query = 'SELECT * FROM posts';
+  const values = [userId];
+
+  const result: QueryResult<PostModel> = await pool.query(query, values);
+  return result.rows;
+}
+
 
 export const savePostComment = async ({ post_id, user_id, content }:
   { post_id: string; user_id?: string, content: string }): Promise<CommentModel> => {

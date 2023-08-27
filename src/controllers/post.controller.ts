@@ -1,7 +1,7 @@
 import { Request, Response, response } from 'express'
 import { catchAsync, respondWithSuccess } from "../utils";
 import { CreatPostPayload, PostCommetPayload } from '../types';
-import { fetchTopUser, getPostByUserId, savePost, savePostComment } from '../services';
+import { fetchTopUser, getPostByUserId, getPosts, savePost, savePostComment } from '../services';
 
 export const createPost = catchAsync(async (req: Request, res: Response) => {
   const { id: user_id } = req.user
@@ -17,6 +17,13 @@ export const getUserPosts = catchAsync(async (req: Request, res: Response) => {
   const posts = await getPostByUserId(user_id);
   return respondWithSuccess(res, 200, 'Posts fetched successfully', posts)
 })
+
+export const fetchPosts = catchAsync(async (req: Request, res: Response) => {
+  const { id: user_id } = req.params
+  const posts = await getPosts(user_id);
+  return respondWithSuccess(res, 200, 'Posts fetched successfully', posts)
+})
+
 
 
 export const postComment = catchAsync(async (req: Request, res: Response) => {
