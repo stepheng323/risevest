@@ -66,6 +66,6 @@ export const fetchTopUser = async (): Promise<any> => {
 `;
 
   const result: QueryResult<CommentModel> = await pool.query(query);
-  return result.rows[0]
+  return result.rows
 
 }

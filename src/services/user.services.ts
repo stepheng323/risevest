@@ -28,3 +28,12 @@ export const findUserById = async (userId: string): Promise<UserModel | null> =>
   const result: QueryResult<UserModel> = await pool.query(query, values);
   return result.rows[0];
 }
+
+
+
+export const getUsers = async (): Promise<UserModel[]> => {
+  const query = 'SELECT * FROM users';
+
+  const result: QueryResult<UserModel> = await pool.query(query);
+  return result.rows;
+}
