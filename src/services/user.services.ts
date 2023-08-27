@@ -32,7 +32,7 @@ export const findUserById = async (userId: string): Promise<UserModel | null> =>
 
 
 export const getUsers = async (): Promise<UserModel[]> => {
-  const query = 'SELECT * FROM users';
+  const query = 'SELECT id, email, firstname, lastname FROM users';
 
   const result: QueryResult<UserModel> = await pool.query(query);
   return result.rows;
