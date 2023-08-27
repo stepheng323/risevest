@@ -8,7 +8,7 @@ const userRouter = Router()
 
 userRouter.post('/signup', validateCreateUser, signup)
 userRouter.post('/login', vaidateLogin, login)
-userRouter.get('/users', fetchUsers)
+userRouter.get('/', fetchUsers)
 
 
 export default userRouter
